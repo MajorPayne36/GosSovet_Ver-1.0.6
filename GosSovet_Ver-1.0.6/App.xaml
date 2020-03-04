@@ -1,0 +1,9 @@
+﻿<Application x:Class="GosSovet_Ver_1._0._6.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:GosSovet_Ver_1._0._6"
+             StartupUri="AdminWorkSheetaml.xaml">
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>

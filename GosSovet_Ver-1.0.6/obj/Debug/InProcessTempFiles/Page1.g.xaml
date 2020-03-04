@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<local:Page1 Title="Page1" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:local="clr-namespace:GosSovet_Ver_1._0._6;assembly=GosSovet_Ver-1.0.6" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <local:Page1.Content>
+    <Grid />
+  </local:Page1.Content>
+</local:Page1>
