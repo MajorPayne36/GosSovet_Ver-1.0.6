@@ -24,6 +24,9 @@ namespace GosSovet_Ver_1._0._6
     {
         SolidColorBrush red = new SolidColorBrush(Color.FromRgb(200, 00, 00));
         SolidColorBrush blue = new SolidColorBrush(Color.FromRgb(00, 00, 200));
+
+        SQLWork work = new SQLWork();
+
         public AdminWorkSheetaml()
         {
             InitializeComponent();
@@ -104,7 +107,7 @@ namespace GosSovet_Ver_1._0._6
                 OtchetCan.Background = blue;
             }
 
-            SQLWork work = new SQLWork();
+            
             DataTable data = new DataTable();
             data = work.GetDboTables(data);
 
@@ -141,7 +144,16 @@ namespace GosSovet_Ver_1._0._6
         {
             string tableName = comboBox1.SelectedItem.ToString();
 
+            
+            work.FillDataGrid(dataGrid1, tableName);
+            
 
+        }
+
+        private void dataGrid1_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
+        {
+            string tableName = comboBox1.SelectedItem.ToString();
+            work.SaveDboChanges(dataGrid1, tableName);
         }
     }
 }

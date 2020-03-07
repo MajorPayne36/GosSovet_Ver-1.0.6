@@ -42,7 +42,8 @@
             <Canvas Height="17" Background="White"/>
         </StackPanel>
         <Grid HorizontalAlignment="Left" Height="314" Margin="181,105,0,0" VerticalAlignment="Top" Width="601">
-            <DataGrid HorizontalAlignment="Left" Height="294" Margin="10,10,0,0" VerticalAlignment="Top" Width="581"/>
+            <DataGrid x:Name="dataGrid1" HorizontalAlignment="Left" Height="294" Margin="10,10,0,0" VerticalAlignment="Top" Width="581"
+                      CanUserAddRows="True" CanUserDeleteRows="True" IsReadOnly="False" RowEditEnding="dataGrid1_RowEditEnding"/>
         </Grid>
         <TextBlock HorizontalAlignment="Left" Margin="186,10,0,0" TextWrapping="Wrap" Text="Таблица:" VerticalAlignment="Top"/>
         <ComboBox x:Name="comboBox1" HorizontalAlignment="Left" Margin="284,10,0,0" VerticalAlignment="Top" Width="162" SelectionChanged="comboBox1_SelectionChanged"/>

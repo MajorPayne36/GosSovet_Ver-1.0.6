@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Windows;
 using System.Data;
+using System.Windows.Controls;
+using System.Windows.Data;
 
 namespace GosSovet_Ver_1._0._6
 {
@@ -94,9 +96,39 @@ namespace GosSovet_Ver_1._0._6
         //}
 
         //Заполняет датагрид
-        public void FillDataGrid (System.Windows.Controls.DataGrid grid, string tableName)
+        public void FillDataGrid (DataGrid grid, string tableName)
         {
+            grid.AllowDrop = true;
+           
 
+            grid.Columns.Clear();
+            grid.ItemsSource = null;
+            grid.Items.Clear();
+            grid.Items.Refresh();
+
+            DataTable dt = new DataTable();
+            SqlDataAdapter adapter;
+
+            using (SqlConnection sqlConnection = new SqlConnection(connectionstr))
+            {
+                sqlConnection.Open();
+                try
+                {
+                    string query = "SELECT * FROM " + tableName;
+                    sqlCommand.CommandText = query;
+                    sqlCommand.Connection = sqlConnection;
+
+                    adapter = new SqlDataAdapter(query, sqlConnection);
+
+                    adapter.Fill(dt);
+
+                    grid.ItemsSource = dt.DefaultView;
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
         }
         //находит список всех таблиц
         public DataTable GetDboTables(DataTable dt)
@@ -112,11 +144,8 @@ namespace GosSovet_Ver_1._0._6
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, connectionstr);
 
-                    //DataSet ds = new DataSet();
-                    //dt = new DataTable();
                     adapter.Fill(dt);
                     int number = sqlCommand.ExecuteNonQuery();
-                    //MessageBox.Show("Добавлено " + number.ToString() + " параметров");
                     return dt;
                 }
                 catch (SqlException ex)
@@ -148,6 +177,26 @@ namespace GosSovet_Ver_1._0._6
                 {
                     MessageBox.Show(ex.Message);
                 }
+            }
+        }
+
+        //Обнавление данных в БД
+        public void SaveDboChanges (DataGrid grid, string tableName)
+        {
+            using (SqlConnection sqlConnection = new SqlConnection(connectionstr))
+            {
+                DataTable dt = new DataTable();
+                SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM " + tableName, sqlConnection);
+
+                sqlConnection.Open();
+                SqlCommandBuilder builder = new SqlCommandBuilder(adapter);
+                adapter.UpdateCommand = builder.GetUpdateCommand();
+                adapter.Update(dt);
+                //grid.Items.CurrentPosition:
+
+                //dt. = grid.ItemsSource;
+                //adapter.Update(dt);
+
             }
         }
 
