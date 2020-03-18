@@ -17,85 +17,6 @@ namespace GosSovet_Ver_1._0._6
         
         private static SqlCommand sqlCommand { get; set; } = new SqlCommand();
 
-        //public void SQLWork(string str)
-        //{
-        //   connectionstr = str;
-        //}
-
-        //Update Insert Delete
-        //public void Insert (string str)
-        //{
-        //    sqlConnection.Open();
-        //    try
-        //    {
-        //        if (string.IsNullOrEmpty(str))
-        //        {
-        //            sqlCommand.CommandText = str;
-        //            sqlCommand.Connection = sqlConnection;
-        //        }
-        //        else MessageBox.Show("Пустой запрос");
-        //        int number = sqlCommand.ExecuteNonQuery();
-        //        MessageBox.Show("Добавлено {0} параметров", number.ToString());
-        //    }
-        //    catch (SqlException ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //    }
-        //    finally
-        //    {
-        //        sqlConnection.Close();
-        //    }
-        //}
-
-        //public void Update (string str)
-        //{
-        //    sqlConnection.Open();
-        //    try
-        //    {
-        //        if (string.IsNullOrEmpty(str))
-        //        {
-        //            sqlCommand.CommandText = str;
-        //            sqlCommand.Connection = sqlConnection;
-        //        }
-        //        else MessageBox.Show("Пустой запрос");
-        //        int number = sqlCommand.ExecuteNonQuery();
-        //        MessageBox.Show("Добавлено {0} параметров", number.ToString());
-        //    }
-        //    catch (SqlException ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //    }
-        //    finally
-        //    {
-        //        sqlConnection.Close();
-        //    }
-        //}
-
-        //public void Delete (string str)
-        //{
-        //    sqlConnection.Open();
-        //    try
-        //    {
-        //        if (string.IsNullOrEmpty(str))
-        //        {
-        //            sqlCommand.CommandText = str;
-        //            sqlCommand.Connection = sqlConnection;
-        //        }
-        //        else MessageBox.Show("Пустой запрос");
-        //        int number = sqlCommand.ExecuteNonQuery();
-        //        MessageBox.Show("Добавлено {0} параметров", number.ToString());
-        //    }
-        //    catch (SqlException ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //    }
-        //    finally
-        //    {
-        //        sqlConnection.Close();
-        //    }
-        //}
-
-        //Заполняет датагрид
         public void FillDataGrid (DataGrid grid, string tableName)
         {
             grid.AllowDrop = true;
@@ -123,12 +44,14 @@ namespace GosSovet_Ver_1._0._6
                     adapter.Fill(dt);
 
                     grid.ItemsSource = dt.DefaultView;
+                    adapter.Dispose();
                 }
                 catch (SqlException ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
             }
+            dt.Dispose();
         }
         //находит список всех таблиц
         public DataTable GetDboTables(DataTable dt)
@@ -146,6 +69,7 @@ namespace GosSovet_Ver_1._0._6
 
                     adapter.Fill(dt);
                     int number = sqlCommand.ExecuteNonQuery();
+                    adapter.Dispose();
                     return dt;
                 }
                 catch (SqlException ex)
@@ -181,7 +105,7 @@ namespace GosSovet_Ver_1._0._6
         }
 
         //Обнавление данных в БД
-        public void SaveDboChanges (DataGrid grid, string tableName)
+        public void SaveDboChanges (string tableName)
         {
             using (SqlConnection sqlConnection = new SqlConnection(connectionstr))
             {
@@ -192,10 +116,7 @@ namespace GosSovet_Ver_1._0._6
                 SqlCommandBuilder builder = new SqlCommandBuilder(adapter);
                 adapter.UpdateCommand = builder.GetUpdateCommand();
                 adapter.Update(dt);
-                //grid.Items.CurrentPosition:
-
-                //dt. = grid.ItemsSource;
-                //adapter.Update(dt);
+                builder.Dispose();
 
             }
         }
@@ -229,6 +150,31 @@ namespace GosSovet_Ver_1._0._6
                 }
             }
             
+        }
+
+        public Boolean FindUser(string Login)
+        {
+            using (SqlConnection sqlConnection = new SqlConnection(connectionstr))
+            {
+                try
+                {
+                    sqlConnection.Open();
+
+                    string cmd = "SELECT COUNT(*) FROM Deputy WHERE Login = '" + Login + "'";
+                    sqlCommand.CommandText = cmd;
+                    sqlCommand.Connection = sqlConnection;
+                    object count = sqlCommand.ExecuteScalar();
+
+                    if (Convert.ToInt32(count) > 0) return true;
+                    else return false;
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return false;
+                }
+            }
+
         }
 
         //Проверка на админа

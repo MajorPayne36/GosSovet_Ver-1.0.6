@@ -32,7 +32,7 @@ namespace GosSovet_Ver_1._0._6
 
         private void btn1_Click(object sender, RoutedEventArgs e)
         {
-            string constr = @"Data Source=DESKTOP-GM2O70F\MSSQLDEV;Initial Catalog=GosSoviet;Integrated Security=True";
+            //string constr = @"Data Source=DESKTOP-GM2O70F\MSSQLDEV;Initial Catalog=GosSoviet;Integrated Security=True";
             SQLWork work = new SQLWork();
             if (work.FindUser(tbLog.Text, tbPass.Text))
             {
