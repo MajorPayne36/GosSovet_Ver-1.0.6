@@ -41,7 +41,7 @@
 
             <TextBox x:Name="tbNameComis" HorizontalAlignment="Left" Height="23" Margin="243,39,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="337"/>
             <Button x:Name="btnComis" Content="☺Добавить" HorizontalAlignment="Left" Margin="645,288,0,0" VerticalAlignment="Top" Width="117" BorderBrush="White" Background="White" Click="btnComis_Click"/>
-            <ComboBox x:Name="comboBoxComis" HorizontalAlignment="Left" Margin="243,95,0,0" VerticalAlignment="Top" Width="337"/>
+            <ComboBox x:Name="comboBoxProfile" HorizontalAlignment="Left" Margin="243,95,0,0" VerticalAlignment="Top" Width="337"/>
         </Grid>
 
         <Grid x:Name="GridAddProfile" HorizontalAlignment="Left" Height="324" Visibility="Hidden" Margin="10,327,0,0" VerticalAlignment="Top" Width="772" IsVisibleChanged="GridAddComis_IsVisibleChanged">
@@ -60,7 +60,7 @@
             <TextBox x:Name="tbSalaryPost" HorizontalAlignment="Left" Height="23" Margin="205,84,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="337"/>
         </Grid>
 
-        <Grid x:Name="GridAddMeet" HorizontalAlignment="Left" Height="324" Visibility="Visible" Margin="10,327,0,0" VerticalAlignment="Top" Width="772" IsVisibleChanged="GridAddMeet_IsVisibleChanged">
+        <Grid x:Name="GridAddMeet" HorizontalAlignment="Left" Height="324" Visibility="Hidden" Margin="10,327,0,0" VerticalAlignment="Top" Width="772" IsVisibleChanged="GridAddMeet_IsVisibleChanged">
             <TextBlock HorizontalAlignment="Left" Margin="39,44,0,0" TextWrapping="Wrap" Text="Дата проведения" VerticalAlignment="Top"/>
             <Button x:Name="btnMeet" Content="☺Добавить" HorizontalAlignment="Left" Margin="645,288,0,0" VerticalAlignment="Top" Width="117" BorderBrush="White" Background="White" Click="btnMeet_Click" RenderTransformOrigin="0.624,0.269"/>
             <TextBlock HorizontalAlignment="Left" Margin="39,85,0,0" TextWrapping="Wrap" Text="Город" VerticalAlignment="Top"/>
@@ -69,15 +69,28 @@
             <ComboBox x:Name="comboBoxMeet" HorizontalAlignment="Left" Margin="205,122,0,0" VerticalAlignment="Top" Width="337"/>
             <DatePicker x:Name="datapickerMeet" HorizontalAlignment="Left" Margin="237,36,0,0" VerticalAlignment="Top" Width="145"/>
         </Grid>
-        
+
+        <Grid x:Name="GridAddDepNCom" HorizontalAlignment="Left" Height ="324" Visibility="Hidden" Margin="10,327,0,0" VerticalAlignment="Top" Width="772" IsVisibleChanged="GridAddDepNCom_IsVisibleChanged">
+            <TextBlock HorizontalAlignment="Left" Margin="39,29,0,0" TextWrapping="Wrap" Text="Дата входа" VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Left" Margin="39,86,0,0" TextWrapping="Wrap" Text="Дата выхода" VerticalAlignment="Top"/>
+            <DatePicker x:Name="DateIn" HorizontalAlignment="Left" Margin="195,25,0,0" VerticalAlignment="Top" CalendarClosed="DateIn_CalendarClosed"/>
+            <DatePicker x:Name="DateOut" HorizontalAlignment="Left" Margin="195,82,0,0" VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Left" Margin="39,155,0,0" TextWrapping="Wrap" Text="Должность" VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Left" Margin="39,198,0,0" TextWrapping="Wrap" Text="Комиссия" VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Left" Margin="39,243,0,0" TextWrapping="Wrap" Text="Депутат" VerticalAlignment="Top"/>
+            <ComboBox x:Name="comboBoxPost"  HorizontalAlignment="Left" Margin="208,149,0,0" VerticalAlignment="Top" Width="120"/>
+            <ComboBox x:Name="comboBoxComis"  HorizontalAlignment="Left" Margin="208,192,0,0" VerticalAlignment="Top" Width="120"/>
+            <ComboBox x:Name="comboBoxDeput"  HorizontalAlignment="Left" Margin="208,237,0,0" VerticalAlignment="Top" Width="120"/>
+            <Button x:Name="btnDepNCom" Content="☺Добавить" HorizontalAlignment="Left" Margin="645,288,0,0" VerticalAlignment="Top" Width="117" BorderBrush="White" Background="White" Click="btnDepNCom_Click" RenderTransformOrigin="0.624,0.269"/>
+        </Grid>
         
         <TextBlock HorizontalAlignment="Left" Margin="542,700,0,0" TextWrapping="Wrap" Text="Таблица:" VerticalAlignment="Top"/>
         <ComboBox x:Name="comboBox1" HorizontalAlignment="Left" Margin="620,694,0,0" VerticalAlignment="Top" Width="162" SelectionChanged="comboBox1_SelectionChanged"/>
 
         <Menu x:Name="menu" VerticalAlignment="Top" Height="25">
-            <MenuItem Header="Добавить">
-                <MenuItem Header="Новый депутат"  Click="MenuItem_Click"/>
-                <MenuItem Header="Новая встреча"  Click="MenuItem_Click_1"/>
+            <MenuItem Header="Функции">
+                <MenuItem Header="Создать БД"  Click="MenuItem_Click"/>
+                <MenuItem Header="Создать таблицу"  Click="MenuItem_Click_1"/>
                 <MenuItem Header="Новый профиль"  Click="MenuItem_Click_2"/>
                 <MenuItem Header="Новая комиссия" Click="MenuItem_Click_3"/>
             </MenuItem>

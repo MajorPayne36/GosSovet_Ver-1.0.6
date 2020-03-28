@@ -45,13 +45,13 @@ namespace GosSovet_Ver_1._0._6
             var profiles = db.Profile.ToList();
             foreach (var profile in profiles)
             {
-                comboBoxComis.Items.Add(profile.IdProfile + profile.ProfileName);
+                comboBoxProfile.Items.Add(profile.IdProfile + profile.ProfileName);
             }
 
             var meets = db.Meeting.ToList();
             foreach (var meet in meets)
             {
-                comboBoxComis.Items.Add(meet.IdMeeting + " " + meet.Date + " " + meet.City);
+                comboBoxMeet.Items.Add(meet.IdMeeting + " " + meet.Date + " " + meet.City);
             }
         }
 
@@ -59,6 +59,70 @@ namespace GosSovet_Ver_1._0._6
         {
             string tableName = comboBox1.SelectedItem.ToString();
             work.FillDataGrid(dataGrid1, tableName);
+
+            switch (tableName)
+            {
+                case "Deput_and_Com":
+                    {
+                        GridAddMeet.Visibility = Visibility.Hidden;
+                        GridAddPost.Visibility = Visibility.Hidden;
+                        GridAddProfile.Visibility = Visibility.Hidden;
+                        GridAddDep.Visibility = Visibility.Hidden;
+                        GridAddComis.Visibility = Visibility.Hidden;
+                        GridAddDepNCom.Visibility = Visibility.Visible;
+                    }
+                    break;
+                case "Comission":
+                    {
+                        GridAddMeet.Visibility = Visibility.Hidden;
+                        GridAddPost.Visibility = Visibility.Hidden;
+                        GridAddProfile.Visibility = Visibility.Hidden;
+                        GridAddDep.Visibility = Visibility.Hidden;
+                        GridAddComis.Visibility = Visibility.Visible;
+                        GridAddDepNCom.Visibility = Visibility.Hidden;
+                    }
+                    break;
+                case "Meeting":
+                    {
+                        GridAddMeet.Visibility = Visibility.Visible;
+                        GridAddPost.Visibility = Visibility.Hidden;
+                        GridAddProfile.Visibility = Visibility.Hidden;
+                        GridAddDep.Visibility = Visibility.Hidden;
+                        GridAddComis.Visibility = Visibility.Hidden;
+                        GridAddDepNCom.Visibility = Visibility.Hidden;
+                    }
+                    break;
+                case "Post":
+                    {
+                        GridAddMeet.Visibility = Visibility.Hidden;
+                        GridAddPost.Visibility = Visibility.Visible;
+                        GridAddProfile.Visibility = Visibility.Hidden;
+                        GridAddDep.Visibility = Visibility.Hidden;
+                        GridAddComis.Visibility = Visibility.Hidden;
+                        GridAddDepNCom.Visibility = Visibility.Hidden;
+                    }
+                    break;
+                case "Profile":
+                    {
+                        GridAddMeet.Visibility = Visibility.Hidden;
+                        GridAddPost.Visibility = Visibility.Hidden;
+                        GridAddProfile.Visibility = Visibility.Visible;
+                        GridAddDep.Visibility = Visibility.Hidden;
+                        GridAddComis.Visibility = Visibility.Hidden;
+                        GridAddDepNCom.Visibility = Visibility.Hidden;
+                    }
+                    break;
+                case "Deputy":
+                    {
+                        GridAddMeet.Visibility = Visibility.Hidden;
+                        GridAddPost.Visibility = Visibility.Hidden;
+                        GridAddProfile.Visibility = Visibility.Hidden;
+                        GridAddDep.Visibility = Visibility.Visible;
+                        GridAddComis.Visibility = Visibility.Hidden;
+                        GridAddDepNCom.Visibility = Visibility.Hidden;
+                    }
+                    break;
+            }
         }
 
         private void dataGrid1_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
@@ -67,36 +131,17 @@ namespace GosSovet_Ver_1._0._6
             work.SaveDboChanges(tableName);
         }
 
-        private void btnComis_Click(object sender, RoutedEventArgs e)
-        {
-            if (comboBoxComis.SelectedItem == null) MessageBox.Show("Выберите профиль комиссии");
-            else
-            {
-                try
-                {
-                    Comission comission = new Comission
-                    {
-                        ComissionName = tbNameComis.Text,
-                        IdProfile = comboBoxComis.SelectedIndex
-                    };
-                    db.Add(comission);
-                    db.SaveChanges();
-                }
-                catch (SqlException ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
-        }
+        #region MenuItemClick
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            //GridAddDep.Visibility = Visibility.Visible;
+            
+            new AddDBWindow().Show();
         }
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
-
+            new AddTableWindow().Show();
         }
 
         private void MenuItem_Click_2(object sender, RoutedEventArgs e)
@@ -109,8 +154,37 @@ namespace GosSovet_Ver_1._0._6
 
         }
 
+        #endregion
+
         #region btn_click
 
+        private void btnDepNCom_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnComis_Click(object sender, RoutedEventArgs e)
+        {
+            if (comboBoxProfile.SelectedItem == null) MessageBox.Show("Выберите профиль комиссии");
+            else
+            {
+                try
+                {
+                    Comission comission = new Comission
+                    {
+                        ComissionName = tbNameComis.Text,
+                        IdProfile = comboBoxProfile.SelectedIndex
+                    };
+                    db.Add(comission);
+                    db.SaveChanges();
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+            
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(tbSurname.Text) ||
@@ -209,24 +283,58 @@ namespace GosSovet_Ver_1._0._6
 
         private void GridAddMeet_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            var meets = db.Meeting.ToList();
-            foreach (var meet in meets)
+            comboBoxMeet.Items.Clear();
+            var comissions = db.Comission.ToList();
+            foreach (var comission in comissions)
             {
-                comboBoxComis.Items.Add(meet.IdMeeting + " " + meet.Date + " " + meet.City);
+                comboBoxMeet.Items.Add(comission.IdComission + " " + comission.ComissionName);
             }
         }
 
         private void GridAddComis_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
+            comboBoxProfile.Items.Clear();
             var profiles = db.Profile.ToList();
             foreach (var profile in profiles)
             {
-                comboBoxComis.Items.Add(profile.IdProfile + profile.ProfileName);
+                comboBoxProfile.Items.Add(profile.IdProfile + profile.ProfileName);
             }
 
         }
+
+        private void GridAddDepNCom_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            comboBoxPost.Items.Clear();
+            comboBoxDeput.Items.Clear();
+            comboBoxComis.Items.Clear();
+
+            var table = db.Deputy.ToList();
+            foreach (var row in table)
+            {
+                comboBoxDeput.Items.Add(row.IdDeputy + " | " + row.Surname + " " + row.Name + " " + row.Fathername);
+            }
+            
+            var table1 = db.Comission.ToList();
+            foreach (var row in table1)
+            {
+                comboBoxComis.Items.Add(row.IdComission + " | " + row.ComissionName);
+            }
+
+            var table2 = db.Post.ToList();
+            foreach (var row in table2)
+            {
+                comboBoxPost.Items.Add(row.IdPost + " | " + row.PostName);
+            }
+
+        }
+
+
+
         #endregion
 
-        
+        private void DateIn_CalendarClosed(object sender, RoutedEventArgs e)
+        {
+            DateOut.SelectedDate = DateIn.SelectedDate + new TimeSpan(730, 0, 0, 0, 0); //new DateTime(year: 2, month: 0, day: 0);
+        }
     }
 }

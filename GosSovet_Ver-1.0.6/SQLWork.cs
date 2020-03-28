@@ -17,6 +17,32 @@ namespace GosSovet_Ver_1._0._6
         
         private static SqlCommand sqlCommand { get; set; } = new SqlCommand();
 
+
+        //
+        // Сводка:
+        //     СоздаетБД.
+        //     
+        public void AddDB(string name) 
+        {
+            using (SqlConnection sqlConnection = new SqlConnection(connectionstr))
+            {
+                sqlConnection.Open();
+                try
+                {
+                    string query = "CREATE DATABASE " + name + ";";
+                    sqlCommand.CommandText = query;
+                    sqlCommand.Connection = sqlConnection;
+                    sqlCommand.ExecuteNonQuery();
+                                 
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }                
+            }
+            
+        }
+
         public void FillDataGrid (DataGrid grid, string tableName)
         {
             grid.AllowDrop = true;

@@ -290,6 +290,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddDBWindow.xaml.cs">
+      <DependentUpon>AddDBWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddTableWindow.xaml.cs">
+      <DependentUpon>AddTableWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddTableWindow2.xaml.cs">
+      <DependentUpon>AddTableWindow2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AdminWorkSheetaml.xaml.cs">
       <DependentUpon>AdminWorkSheetaml.xaml</DependentUpon>
     </Compile>
@@ -318,6 +327,18 @@
       <DependentUpon>Registration.xaml</DependentUpon>
     </Compile>
     <Compile Include="SQLWork.cs" />
+    <Page Include="AddDBWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddTableWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddTableWindow2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AdminWorkSheetaml.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

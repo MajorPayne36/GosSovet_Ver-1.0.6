@@ -94,3 +94,7 @@ C:\Users\ACER\source\repos\GosSovet_Ver-1.0.6\GosSovet_Ver-1.0.6\bin\Debug\pt-BR
 C:\Users\ACER\source\repos\GosSovet_Ver-1.0.6\GosSovet_Ver-1.0.6\bin\Debug\ru\Microsoft.Data.SqlClient.resources.dll
 C:\Users\ACER\source\repos\GosSovet_Ver-1.0.6\GosSovet_Ver-1.0.6\bin\Debug\zh-Hans\Microsoft.Data.SqlClient.resources.dll
 C:\Users\ACER\source\repos\GosSovet_Ver-1.0.6\GosSovet_Ver-1.0.6\bin\Debug\zh-Hant\Microsoft.Data.SqlClient.resources.dll
+C:\Users\ACER\source\repos\GosSovet_Ver-1.0.6\GosSovet_Ver-1.0.6\obj\Debug\AddDBWindow.g.cs
+C:\Users\ACER\source\repos\GosSovet_Ver-1.0.6\GosSovet_Ver-1.0.6\obj\Debug\AddDBWindow.baml
+C:\Users\ACER\source\repos\GosSovet_Ver-1.0.6\GosSovet_Ver-1.0.6\obj\Debug\AddTableWindow.g.cs
+C:\Users\ACER\source\repos\GosSovet_Ver-1.0.6\GosSovet_Ver-1.0.6\obj\Debug\AddTableWindow.baml
