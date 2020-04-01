@@ -11,17 +11,38 @@ using System.Windows.Data;
 
 namespace GosSovet_Ver_1._0._6
 {
-    class SQLWork
+    public partial class SQLWork
     {
         public string connectionstr = @"Data Source=DESKTOP-GM2O70F\MSSQLDEV;Initial Catalog=GosSoviet;Integrated Security=True"; //{get; set;}
         
         private static SqlCommand sqlCommand { get; set; } = new SqlCommand();
 
+        /// <summary>
+        /// Создает таблицу
+        /// </summary>
+        public void AddTable (string query)
+        {
+            using (SqlConnection sqlConnection = new SqlConnection(connectionstr))
+            {
+                sqlConnection.Open();
+                try
+                {
+                    sqlCommand.CommandText = query;
+                    sqlCommand.Connection = sqlConnection;
+                    sqlCommand.ExecuteNonQuery();
+                    MessageBox.Show("Таблица успешно создана!", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
 
-        //
-        // Сводка:
-        //     СоздаетБД.
-        //     
+        /// <summary>
+        /// Creat DB
+        /// </summary>
+        /// <param name="name"></param>
         public void AddDB(string name) 
         {
             using (SqlConnection sqlConnection = new SqlConnection(connectionstr))
@@ -43,6 +64,9 @@ namespace GosSovet_Ver_1._0._6
             
         }
 
+        /// <summary>
+        /// Заполняет передаваемый датагрид
+        /// </summary>
         public void FillDataGrid (DataGrid grid, string tableName)
         {
             grid.AllowDrop = true;
@@ -79,7 +103,10 @@ namespace GosSovet_Ver_1._0._6
             }
             dt.Dispose();
         }
-        //находит список всех таблиц
+
+        /// <summary>
+        /// Выводит список всех таблиц из БД
+        /// </summary>
         public DataTable GetDboTables(DataTable dt)
         {
             using (SqlConnection sqlConnection = new SqlConnection(connectionstr))
@@ -94,7 +121,7 @@ namespace GosSovet_Ver_1._0._6
                     SqlDataAdapter adapter = new SqlDataAdapter(query, connectionstr);
 
                     adapter.Fill(dt);
-                    int number = sqlCommand.ExecuteNonQuery();
+                    sqlCommand.ExecuteNonQuery();
                     adapter.Dispose();
                     return dt;
                 }
@@ -106,7 +133,9 @@ namespace GosSovet_Ver_1._0._6
             }
         }
 
-        //незнаю что это
+        /// <summary>
+        /// Отправляет передаваемый запрос
+        /// </summary>
         public void SendQuery (string str)
         {
             using (SqlConnection sqlConnection = new SqlConnection(connectionstr))
@@ -130,7 +159,9 @@ namespace GosSovet_Ver_1._0._6
             }
         }
 
-        //Обнавление данных в БД
+        /// <summary>
+        /// Обновляет БД
+        /// </summary>
         public void SaveDboChanges (string tableName)
         {
             using (SqlConnection sqlConnection = new SqlConnection(connectionstr))
@@ -147,7 +178,9 @@ namespace GosSovet_Ver_1._0._6
             }
         }
 
-        //Проверка на существования юзера
+        /// <summary>
+        /// Проверка на существование пользователя
+        /// </summary>
         public Boolean FindUser (string Login, string Password)
         {
             using (SqlConnection sqlConnection = new SqlConnection(connectionstr))
@@ -177,7 +210,9 @@ namespace GosSovet_Ver_1._0._6
             }
             
         }
-
+        /// <summary>
+        /// Нахождение юзера по логину
+        /// </summary>
         public Boolean FindUser(string Login)
         {
             using (SqlConnection sqlConnection = new SqlConnection(connectionstr))
@@ -203,7 +238,9 @@ namespace GosSovet_Ver_1._0._6
 
         }
 
-        //Проверка на админа
+        /// <summary>
+        /// Проверка на роль админа
+        /// </summary>
         public Boolean IsAdmin (string Login, string Password)
         {
 

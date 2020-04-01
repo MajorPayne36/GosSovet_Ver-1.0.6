@@ -141,7 +141,7 @@ namespace GosSovet_Ver_1._0._6
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
-            new AddTableWindow().Show();
+            new AddTableWindow(work).Show();
         }
 
         private void MenuItem_Click_2(object sender, RoutedEventArgs e)

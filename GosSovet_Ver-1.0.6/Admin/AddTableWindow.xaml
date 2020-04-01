@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GosSovet_Ver_1._0._6"
         mc:Ignorable="d"
-        Title="AddTableWindow" Height="376.891" Width="716.807">
+        Title="AddTableWindow" Height="376.891" Width="716.807" WindowStartupLocation="CenterScreen">
     <Grid>
+        
         <TextBlock HorizontalAlignment="Left" Margin="50,93,0,0" TextWrapping="Wrap" Text="Столбец >>" VerticalAlignment="Top"/>
         <TextBox x:Name="tbName" HorizontalAlignment="Left" Height="23" Margin="169,86,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <Button Content="Далее" HorizontalAlignment="Left" Margin="518,296,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
@@ -14,9 +15,11 @@
         <TextBox x:Name="tbType"  HorizontalAlignment="Left" Height="23" Margin="169,139,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="262" Margin="338,10,0,0" VerticalAlignment="Top" Width="361" SelectionChanged="listBox_SelectionChanged"/>
         <Button Click="Button_Click" Content="Добавть" HorizontalAlignment="Left" Margin="214,257,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button Content="Удалить" HorizontalAlignment="Left" Margin="116,257,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Удалить" HorizontalAlignment="Left" Margin="116,257,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_2"/>
         <CheckBox x:Name="rb" Content="Not NULL" HorizontalAlignment="Left" Margin="50,170,0,0" VerticalAlignment="Top"/>
         <CheckBox x:Name="rb_Copy" Content="PRIMARY KEY" HorizontalAlignment="Left" Margin="50,202,0,0" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="50,37,0,0" TextWrapping="Wrap" Text="Название" VerticalAlignment="Top"/>
+        <TextBox x:Name="tableName" HorizontalAlignment="Left" Height="23" Margin="169,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </Window>

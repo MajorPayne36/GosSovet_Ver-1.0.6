@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\ACER\source\repos\GosSovet_Ver-1.0.6\GosSovet_Ver-1.0.6\App.xaml
-9-838252125
+7-1689060769
 
-23-105639438
+21-272876335
 159-423268878
-AddDBWindow.xaml;AddTableWindow.xaml;AddTableWindow2.xaml;AdminWorkSheetaml.xaml;Authorization.xaml;Loading.xaml;MainWindow.xaml;Page1.xaml;Registration.xaml;
+Admin\AddDBWindow.xaml;Admin\AddTableWindow.xaml;Admin\AdminWorkSheetaml.xaml;Autorization\Authorization.xaml;Loading.xaml;MainWindow.xaml;Autorization\Registration.xaml;
 
-True
+False
 

@@ -290,25 +290,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AddDBWindow.xaml.cs">
+    <Compile Include="Admin\AddDBWindow.xaml.cs">
       <DependentUpon>AddDBWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AddTableWindow.xaml.cs">
+    <Compile Include="Admin\AddTableWindow.xaml.cs">
       <DependentUpon>AddTableWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AddTableWindow2.xaml.cs">
-      <DependentUpon>AddTableWindow2.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="AdminWorkSheetaml.xaml.cs">
+    <Compile Include="Admin\AdminWorkSheetaml.xaml.cs">
       <DependentUpon>AdminWorkSheetaml.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Authorization.xaml.cs">
+    <Compile Include="Autorization\Authorization.xaml.cs">
       <DependentUpon>Authorization.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Comission.cs" />
-    <Compile Include="DepAndCom.cs" />
-    <Compile Include="Deputy.cs" />
-    <Compile Include="GosSovietContext.cs" />
+    <Compile Include="Models\Comission.cs" />
+    <Compile Include="Models\DepAndCom.cs" />
+    <Compile Include="Models\Deputy.cs" />
+    <Compile Include="Models\GosSovietContext.cs" />
     <Compile Include="GosSovietDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -317,33 +314,26 @@
     <Compile Include="Loading.xaml.cs">
       <DependentUpon>Loading.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Meeting.cs" />
-    <Compile Include="Page1.xaml.cs">
-      <DependentUpon>Page1.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Post.cs" />
-    <Compile Include="Profile.cs" />
-    <Compile Include="Registration.xaml.cs">
+    <Compile Include="Models\Meeting.cs" />
+    <Compile Include="Models\Post.cs" />
+    <Compile Include="Models\Profile.cs" />
+    <Compile Include="Autorization\Registration.xaml.cs">
       <DependentUpon>Registration.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SQLWork.cs" />
-    <Page Include="AddDBWindow.xaml">
+    <Compile Include="Models\SQLWork.cs" />
+    <Page Include="Admin\AddDBWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AddTableWindow.xaml">
+    <Page Include="Admin\AddTableWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AddTableWindow2.xaml">
+    <Page Include="Admin\AdminWorkSheetaml.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AdminWorkSheetaml.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Authorization.xaml">
+    <Page Include="Autorization\Authorization.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -363,11 +353,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Page1.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Registration.xaml">
+    <Page Include="Autorization\Registration.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
